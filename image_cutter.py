@@ -24,7 +24,7 @@ style_img = cv2.imread('data/style.jpg')
 style_img = cv2.resize(style_img, (800, 800))
 
 target_img = cv2.imread('data/1.jpg')
-target_img = imutils.resize(target_img, width=1200)[100:,100:]
+target_img = imutils.resize(target_img, width=800)[50:,0:]
 
 cv2.namedWindow('test')
 cv2.setMouseCallback('test', onmouse)
@@ -36,7 +36,7 @@ cv2.destroyAllWindows()
 mask = np.zeros(target_img.shape)
 cv2.drawContours(mask, [np.array(points)], -1, (0, 255, 0), -1)
 
-scale = 1
+scale = 0.5
 mask = cv2.resize(mask, (int(mask.shape[1] * scale), int(mask.shape[0] * scale)))
 target_img = cv2.resize(target_img, (int(target_img.shape[1] * scale), int(target_img.shape[0] * scale)))
 
@@ -57,7 +57,7 @@ pickle.dump(obj, open('obj.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
 # Create style
 cv2.imwrite('data/style.jpg', style_img)
 
-tx, ty = 0, 210
+tx, ty = 380, 350
 # Create naive
 naive = style_img.copy()
 for (i,j) in obj:
