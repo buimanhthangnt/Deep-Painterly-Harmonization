@@ -48,6 +48,9 @@ obj = pickle.load(open('obj.pkl', 'rb'))
 # pickle.dump(background, open('background.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
 # pickle.dump(obj, open('obj.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
 
+# Create style
+cv2.imwrite('data/style.jpg', style_img)
+
 # Create naive
 naive = style_img.copy()
 for (i,j) in obj:
