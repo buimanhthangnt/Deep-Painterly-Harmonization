@@ -248,4 +248,4 @@ output = tmask_img * output + (1 - tmask_img) * style_img
 image = output.cpu().clone()
 image = image.squeeze(0)
 image = unloader(image)
-cv2.imwrite('result.jpg', np.array(image[:,:,::-1]))
+cv2.imwrite('result.jpg', np.array(image)[:,:,::-1])
