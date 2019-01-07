@@ -36,7 +36,7 @@ cv2.destroyAllWindows()
 mask = np.zeros(target_img.shape)
 cv2.drawContours(mask, [np.array(points)], -1, (0, 255, 0), -1)
 
-scale = 0.8
+scale = 0.92
 mask = cv2.resize(mask, (int(mask.shape[1] * scale), int(mask.shape[0] * scale)))
 target_img = cv2.resize(target_img, (int(target_img.shape[1] * scale), int(target_img.shape[0] * scale)))
 
@@ -57,7 +57,7 @@ pickle.dump(obj, open('obj.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
 # Create style
 cv2.imwrite('data/style.jpg', style_img)
 
-tx, ty = 300, -500
+tx, ty = 380, -620
 # Create naive
 naive = style_img.copy()
 for (i,j) in obj:
