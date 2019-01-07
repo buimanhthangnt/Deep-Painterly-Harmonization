@@ -21,30 +21,32 @@ def onmouse(event, x, y, flags, param):
         points.append((x, y))
 
 style_img = cv2.imread('data/style.jpg')
-style_img = cv2.resize(style_img, (800, 600))
+style_img = cv2.resize(style_img, (800, 800))
 
 target_img = cv2.imread('/home/thangbm/Downloads/1.png')
 target_img = imutils.resize(target_img, width=800)
 
-cv2.namedWindow('test')
-cv2.setMouseCallback('test', onmouse)
+# cv2.namedWindow('test')
+# cv2.setMouseCallback('test', onmouse)
 
-cv2.imshow('test', target_img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# cv2.imshow('test', target_img)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
 
-mask = np.zeros(target_img.shape)
-cv2.drawContours(mask, [np.array(points)], -1, (0, 255, 0), -1)
-background, obj = [], []
-for i in range(mask.shape[0]):
-    for j in range(mask.shape[1]):
-        if mask[i,j,1] != 255:
-            background.append((i,j))
-        else:
-            obj.append((i,j))
+# mask = np.zeros(target_img.shape)
+# cv2.drawContours(mask, [np.array(points)], -1, (0, 255, 0), -1)
+# background, obj = [], []
+# for i in range(mask.shape[0]):
+#     for j in range(mask.shape[1]):
+#         if mask[i,j,1] != 255:
+#             background.append((i,j))
+#         else:
+#             obj.append((i,j))
 
-pickle.dump(background, open('background.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
-pickle.dump(obj, open('obj.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
+background = pickle.load(open('background.pkl', 'rb'))
+obj = pickle.load(open('obj.pkl', 'rb'))
+# pickle.dump(background, open('background.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
+# pickle.dump(obj, open('obj.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
 
 # Create naive
 naive = style_img.copy()
