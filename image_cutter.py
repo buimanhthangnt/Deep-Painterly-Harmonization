@@ -24,7 +24,7 @@ style_img = cv2.imread('data/style.jpg')
 style_img = cv2.resize(style_img, (800, 800))
 
 target_img = cv2.imread('data/1.jpg')
-target_img = imutils.resize(target_img, width=800)[300:,100:]
+target_img = imutils.resize(target_img, width=1200)[100:,100:]
 
 cv2.namedWindow('test')
 cv2.setMouseCallback('test', onmouse)
@@ -57,7 +57,7 @@ pickle.dump(obj, open('obj.pkl', 'wb'), pickle.HIGHEST_PROTOCOL)
 # Create style
 cv2.imwrite('data/style.jpg', style_img)
 
-tx, ty = 140, 155
+tx, ty = 0, 210
 # Create naive
 naive = style_img.copy()
 for (i,j) in obj:

@@ -223,7 +223,7 @@ def run_style_transfer(cnn, normalization, content_img, style_img, input_img, ma
         style_score *= style_weight
         content_score *= content_weight
 
-        loss = style_score + content_score
+        loss = 3 * style_score + content_score
         loss.backward()
 
         if run[0] % 100 == 0:
